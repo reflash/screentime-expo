@@ -18,3 +18,7 @@ export function getTheme(): string {
 export function setTheme(theme: string): void {
   return ExpoSettingsModule.setTheme(theme);
 }
+
+export function getApps(): string {
+  return ExpoSettingsModule.getApps();
+}

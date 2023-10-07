@@ -13,7 +13,7 @@ export default function App() {
 
     return () => subscription.remove();
   }, [setTheme]);
-
+  console.log(Settings.getApps());
   // Toggle between dark and light theme
   const nextTheme = theme === 'dark' ? 'light' : 'dark';
 

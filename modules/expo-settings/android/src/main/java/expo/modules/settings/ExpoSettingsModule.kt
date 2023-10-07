@@ -20,6 +20,10 @@ class ExpoSettingsModule : Module() {
     Function("getTheme") {
       return@Function getPreferences().getString("theme", "system")
     }
+
+    Function("getApps") {
+      return "system"
+    }
   }
 
   private val context
