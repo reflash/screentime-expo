@@ -5,6 +5,7 @@ import { useState, useEffect } from 'react';
 
 export default function App() {
   const [themeName, setThemeName] = useState<string>(getTheme());
+  const [apps, setApps] = useState<string>("");
 
   useEffect(() => {
     const subscription = addThemeListener(({ theme: newTheme }) => {
@@ -13,15 +14,24 @@ export default function App() {
 
     return () => subscription.remove();
   }, [setThemeName]);
+
+  useEffect(() => {
+    const fetchApps = async () => {
+      const res = await getApps();
+      setApps(res);
+    }
+
+    fetchApps();
+  }, []);
   
   // Toggle between dark and light theme
   const nextTheme = themeName === 'dark' ? 'light' : 'dark';
-
+  
   return (
     <View style={styles.container}>
       <Text>Open up App.tsx to start working on your app!</Text>
       <Text>Theme: {themeName}</Text>
-      <Text>Apps: {JSON.stringify(getApps())}</Text>
+      <Text>Apps: {apps}</Text>
       <Button title={`Set theme to ${nextTheme}`} onPress={() => setTheme(nextTheme)} />
       <StatusBar style="auto" />
     </View>

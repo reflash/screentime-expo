@@ -21,16 +21,18 @@ public class ExpoScreentimeModule: Module {
     AsyncFunction("getApps") { () -> String in
       if #available(iOS 16.0, *) {
         let ac = AuthorizationCenter.shared
-        let _ = Task {
+        let authTask = Task {
             do {
                 try await ac.requestAuthorization(for: .individual)
             }
             catch {
-                // Some error occurred
+                return "not able to authorize: \(error)"
             }
+            return "authorized"
         }
+        return await authTask.value
       }
-      return "system"
+      return "wrong version"
     }
 
     View(ExpoScreentimeView.self) {

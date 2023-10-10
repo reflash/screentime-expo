@@ -24,7 +24,7 @@ export function setTheme(theme: string): void {
   return ExpoScreentimeModule.setTheme(theme);
 }
 
-export function getApps(): string {
+export function getApps(): Promise<string> {
   return ExpoScreentimeModule.getApps();
 }
 

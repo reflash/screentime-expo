@@ -8,7 +8,7 @@ module.exports = ({ config }) => ({
     },
     ios: {
         bundleIdentifier: "com.test.screentime.expo",
-        buildNumber: "1"
+        buildNumber: "2"
     },
     android: {
         package: "com.test.screentime.expo",
