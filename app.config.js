@@ -8,10 +8,13 @@ module.exports = ({ config }) => ({
     },
     ios: {
         bundleIdentifier: "com.test.screentime.expo",
-        buildNumber: "2"
+        buildNumber: "4",
+        entitlements: {
+          "com.apple.developer.family-controls": true
+        }
     },
     android: {
         package: "com.test.screentime.expo",
-        versionCode: 1
+        versionCode: 2
     }
   });
