@@ -1,9 +1,9 @@
 import ExpoModulesCore
 import FamilyControls
 
-public class ExpoSettingsModule: Module {
+public class ExpoScreentimeModule: Module {
   public func definition() -> ModuleDefinition {
-    Name("ExpoSettings")
+    Name("ExpoScreentime")
 
     Events("onChangeTheme")
 
@@ -18,7 +18,7 @@ public class ExpoSettingsModule: Module {
       UserDefaults.standard.string(forKey: "theme") ?? "system"
     }
 
-    Function("getApps") { () -> String in
+    AsyncFunction("getApps") { () -> String in
       if #available(iOS 16.0, *) {
         let ac = AuthorizationCenter.shared
         let _ = Task {
@@ -32,5 +32,13 @@ public class ExpoSettingsModule: Module {
       }
       return "system"
     }
+
+    View(ExpoScreentimeView.self) {
+      // Defines a setter for the `name` prop.
+      Prop("name") { (view: ExpoScreentimeView, prop: String) in
+        print(prop)
+      }
+    }
   }
 }
+

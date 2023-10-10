@@ -3,13 +3,12 @@ module.exports = ({ config }) => ({
     slug: "screentime-expo",
     extra: {
       eas: {
-        projectId: ""
+        projectId: "4d563055-9602-4983-942f-57edeec3d0a3"
       }
     },
     ios: {
         bundleIdentifier: "com.test.screentime.expo",
-        buildNumber: "1",
-        entitlements: ["com.apple.developer.family-controls"]
+        buildNumber: "1"
     },
     android: {
         package: "com.test.screentime.expo",

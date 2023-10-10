@@ -1,4 +1,4 @@
-package expo.modules.settings
+package expo.modules.screentime
 
 import android.content.Context
 import android.content.SharedPreferences
@@ -6,9 +6,9 @@ import androidx.core.os.bundleOf
 import expo.modules.kotlin.modules.Module
 import expo.modules.kotlin.modules.ModuleDefinition
 
-class ExpoSettingsModule : Module() {
+class ExpoScreentimeModule : Module() {
   override fun definition() = ModuleDefinition {
-    Name("ExpoSettings")
+    Name("ExpoScreentime")
 
     Events("onChangeTheme")
 
@@ -21,8 +21,15 @@ class ExpoSettingsModule : Module() {
       return@Function getPreferences().getString("theme", "system")
     }
 
-    Function("getApps") {
+    AsyncFunction("getApps") {
       return "system"
+    }
+
+    View(ExpoScreentimeView::class) {
+      // Defines a setter for the `name` prop.
+      Prop("name") { view: ExpoScreentimeView, prop: String ->
+        println(prop)
+      }
     }
   }
 

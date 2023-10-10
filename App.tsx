@@ -1,27 +1,28 @@
 import { StatusBar } from 'expo-status-bar';
 import { Button, StyleSheet, Text, View } from 'react-native';
-import * as Settings from 'expo-settings';
+import { getTheme, setTheme, getApps, addThemeListener } from './modules/expo-screentime';
 import { useState, useEffect } from 'react';
 
 export default function App() {
-  const [theme, setTheme] = useState<string>(Settings.getTheme());
+  const [themeName, setThemeName] = useState<string>(getTheme());
 
   useEffect(() => {
-    const subscription = Settings.addThemeListener(({ theme: newTheme }) => {
-      setTheme(newTheme);
+    const subscription = addThemeListener(({ theme: newTheme }) => {
+      setThemeName(newTheme);
     });
 
     return () => subscription.remove();
-  }, [setTheme]);
-  console.log(Settings.getApps());
+  }, [setThemeName]);
+  
   // Toggle between dark and light theme
-  const nextTheme = theme === 'dark' ? 'light' : 'dark';
+  const nextTheme = themeName === 'dark' ? 'light' : 'dark';
 
   return (
     <View style={styles.container}>
       <Text>Open up App.tsx to start working on your app!</Text>
-      <Text>Theme: {Settings.getTheme()}</Text>
-      <Button title={`Set theme to ${nextTheme}`} onPress={() => Settings.setTheme(nextTheme)} />
+      <Text>Theme: {themeName}</Text>
+      <Text>Apps: {JSON.stringify(getApps())}</Text>
+      <Button title={`Set theme to ${nextTheme}`} onPress={() => setTheme(nextTheme)} />
       <StatusBar style="auto" />
     </View>
   );
