@@ -1,7 +1,17 @@
 import ExpoModulesCore
 
-// This view will be used as a native component. Make sure to inherit from `ExpoView`
-// to apply the proper styling (e.g. border radius and shadows).
 class ExpoScreentimeView: ExpoView {
+  let onSelectEvent = EventDispatcher()
+  let screenTimeView = ScreenTimeView()
   
+  required init(appContext: AppContext? = nil) {
+      super.init(appContext: appContext)
+      clipsToBounds = true
+      addSubview(screenTimeView)
+      screenTimeView.setEventDispatcher(onSelectEvent)
+    }
+
+    override func layoutSubviews() {
+      screenTimeView.frame = bounds
+    }
 }

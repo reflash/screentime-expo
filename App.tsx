@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
-import { Button, StyleSheet, Text, View } from 'react-native';
-import { getTheme, setTheme, getApps, addThemeListener } from './modules/expo-screentime';
+import { Button, SafeAreaView, StyleSheet, Text, View } from 'react-native';
+import { getTheme, setTheme, getApps, addThemeListener, ExpoScreentimeView } from './modules/expo-screentime';
 import { useState, useEffect } from 'react';
 
 export default function App() {
@@ -28,13 +28,17 @@ export default function App() {
   const nextTheme = themeName === 'dark' ? 'light' : 'dark';
   
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <Text>Open up App.tsx to start working on your app!</Text>
       <Text>Theme: {themeName}</Text>
       <Text>Apps: {apps}</Text>
+      <ExpoScreentimeView 
+        style={{ height: 50, width: "100%" }} 
+        name="123" 
+      />
       <Button title={`Set theme to ${nextTheme}`} onPress={() => setTheme(nextTheme)} />
       <StatusBar style="auto" />
-    </View>
+    </SafeAreaView>
   );
 }
 

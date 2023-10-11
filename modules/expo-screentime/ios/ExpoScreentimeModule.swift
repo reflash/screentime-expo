@@ -2,6 +2,9 @@ import ExpoModulesCore
 import FamilyControls
 
 public class ExpoScreentimeModule: Module {
+  private let decoder = JSONDecoder()
+  private let encoder = JSONEncoder()
+
   public func definition() -> ModuleDefinition {
     Name("ExpoScreentime")
 
@@ -24,11 +27,21 @@ public class ExpoScreentimeModule: Module {
         let authTask = Task {
             do {
                 try await ac.requestAuthorization(for: .individual)
+                let data = UserDefaults.standard.data(forKey: "ScreenTimeSelection")
+                if data != nil {
+                  let decodedData = try? decoder.decode(
+                      FamilyActivitySelection.self,
+                      from: data!
+                  )
+                  let jsonData = try encoder.encode(decodedData!)
+                  let json = String(data: jsonData, encoding: String.Encoding.utf8)
+                  return json!
+                }   
+                return "no apps selected yet"
             }
             catch {
                 return "not able to authorize: \(error)"
             }
-            return "authorized"
         }
         return await authTask.value
       }
@@ -36,9 +49,8 @@ public class ExpoScreentimeModule: Module {
     }
 
     View(ExpoScreentimeView.self) {
-      // Defines a setter for the `name` prop.
-      Prop("name") { (view: ExpoScreentimeView, prop: String) in
-        print(prop)
+      Prop("name") { (view: ExpoScreentimeView, text: String) in
+        view.screenTimeView.setText(text)
       }
     }
   }
