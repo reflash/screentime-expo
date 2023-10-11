@@ -6,4 +6,5 @@ export type ChangeEventPayload = {
 
 export type ExpoScreentimeViewProps = {
   name: string;
+  onSelectEvent?: (event: { nativeEvent: any }) => void;
 } & ViewProps;

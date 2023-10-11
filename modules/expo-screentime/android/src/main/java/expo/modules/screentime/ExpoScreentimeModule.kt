@@ -21,8 +21,12 @@ class ExpoScreentimeModule : Module() {
       return@Function getPreferences().getString("theme", "system")
     }
 
-    AsyncFunction("getApps") {
-      return "system"
+    AsyncFunction("authorize") {
+      return false
+    }
+
+    Function("selectedAppsData") {
+      return ""
     }
 
     View(ExpoScreentimeView::class) {
@@ -30,6 +34,7 @@ class ExpoScreentimeModule : Module() {
       Prop("name") { view: ExpoScreentimeView, prop: String ->
         println(prop)
       }
+      Events("onSelectEvent")
     }
   }
 

@@ -24,8 +24,12 @@ export function setTheme(theme: string): void {
   return ExpoScreentimeModule.setTheme(theme);
 }
 
-export function getApps(): Promise<string> {
-  return ExpoScreentimeModule.getApps();
+export function authorize(): Promise<boolean> {
+  return ExpoScreentimeModule.authorize();
+}
+
+export function selectedAppsData(): string {
+  return ExpoScreentimeModule.selectedAppsData();
 }
 
 export { ExpoScreentimeView, ExpoScreentimeViewProps, ChangeEventPayload };

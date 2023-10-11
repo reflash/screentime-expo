@@ -42,28 +42,29 @@ class ScreenTimeView: UIView {
 
   @available(iOS 15, *)
   func saveSelection(selection: FamilyActivitySelection) {
+    let defaults = UserDefaults.standard
+
+    defaults.set(
+        try? encoder.encode(selection), 
+        forKey: userDefaultsKey
+    )
+
+    self.onSelectEvent?([:])
+  }
     
-        let defaults = UserDefaults.standard
+  @available(iOS 15, *)
+  func savedSelection() -> FamilyActivitySelection? {
+      let defaults = UserDefaults.standard
+      
+      guard let data = defaults.data(forKey: userDefaultsKey) else {
+          return nil
+      }
 
-        defaults.set(
-            try? encoder.encode(selection), 
-            forKey: userDefaultsKey
-        )
-    }
-    
-    @available(iOS 15, *)
-    func savedSelection() -> FamilyActivitySelection? {
-        let defaults = UserDefaults.standard
-
-        guard let data = defaults.data(forKey: userDefaultsKey) else {
-            return nil
-        }
-
-        return try? decoder.decode(
-            FamilyActivitySelection.self,
-            from: data
-        )
-    }
+      return try? decoder.decode(
+          FamilyActivitySelection.self,
+          from: data
+      )
+  }
   
   override init(frame: CGRect) {
     super.init(frame: frame)
@@ -77,7 +78,7 @@ class ScreenTimeView: UIView {
       hostView.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
       hostView.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
 
-      model.activitySelection = savedSelection() ?? FamilyActivitySelection()
+        model.activitySelection = savedSelection() ?? FamilyActivitySelection(includeEntireCategory: true)
         
       model.$activitySelection.sink { selection in
           self.saveSelection(selection: selection)

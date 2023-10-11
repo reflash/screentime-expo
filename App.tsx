@@ -1,42 +1,34 @@
 import { StatusBar } from 'expo-status-bar';
-import { Button, SafeAreaView, StyleSheet, Text, View } from 'react-native';
-import { getTheme, setTheme, getApps, addThemeListener, ExpoScreentimeView } from './modules/expo-screentime';
+import { SafeAreaView, StyleSheet, Text } from 'react-native';
+import { ExpoScreentimeView, authorize, selectedAppsData } from './modules/expo-screentime';
 import { useState, useEffect } from 'react';
 
 export default function App() {
-  const [themeName, setThemeName] = useState<string>(getTheme());
-  const [apps, setApps] = useState<string>("");
+  const [authorized, setAuthorized] = useState<boolean>(false);
+  const [appsData, setAppsData] = useState<string>("");
 
   useEffect(() => {
-    const subscription = addThemeListener(({ theme: newTheme }) => {
-      setThemeName(newTheme);
-    });
-
-    return () => subscription.remove();
-  }, [setThemeName]);
-
-  useEffect(() => {
-    const fetchApps = async () => {
-      const res = await getApps();
-      setApps(res);
+    const screentimeAuth = async () => {
+      const res = await authorize();
+      setAppsData(selectedAppsData());
+      setAuthorized(res);
     }
 
-    fetchApps();
+    screentimeAuth();
   }, []);
-  
-  // Toggle between dark and light theme
-  const nextTheme = themeName === 'dark' ? 'light' : 'dark';
   
   return (
     <SafeAreaView style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <Text>Theme: {themeName}</Text>
-      <Text>Apps: {apps}</Text>
-      <ExpoScreentimeView 
-        style={{ height: 50, width: "100%" }} 
-        name="123" 
-      />
-      <Button title={`Set theme to ${nextTheme}`} onPress={() => setTheme(nextTheme)} />
+      <Text>Apps: {appsData}</Text>
+      {authorized && 
+        <ExpoScreentimeView 
+          style={{ height: 50, width: "100%" }} 
+          name="123"
+          onSelectEvent={({ nativeEvent: { } }) => {
+            setAppsData(selectedAppsData());
+          }}
+        />
+      }
       <StatusBar style="auto" />
     </SafeAreaView>
   );

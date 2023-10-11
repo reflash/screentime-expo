@@ -21,37 +21,44 @@ public class ExpoScreentimeModule: Module {
       UserDefaults.standard.string(forKey: "theme") ?? "system"
     }
 
-    AsyncFunction("getApps") { () -> String in
+    AsyncFunction("authorize") { () -> Bool in
       if #available(iOS 16.0, *) {
         let ac = AuthorizationCenter.shared
         let authTask = Task {
             do {
                 try await ac.requestAuthorization(for: .individual)
-                let data = UserDefaults.standard.data(forKey: "ScreenTimeSelection")
-                if data != nil {
-                  let decodedData = try? decoder.decode(
-                      FamilyActivitySelection.self,
-                      from: data!
-                  )
-                  let jsonData = try encoder.encode(decodedData!)
-                  let json = String(data: jsonData, encoding: String.Encoding.utf8)
-                  return json!
-                }   
-                return "no apps selected yet"
+                return true
             }
             catch {
-                return "not able to authorize: \(error)"
+                return false
             }
         }
         return await authTask.value
       }
-      return "wrong version"
+      return false
+    }
+
+    Function("selectedAppsData") { () -> String in
+      if #available(iOS 16.0, *) {
+        let data = UserDefaults.standard.data(forKey: "ScreenTimeSelection")
+        if data != nil {
+          let decodedData = try? decoder.decode(
+              FamilyActivitySelection.self,
+              from: data!
+          )
+          let jsonData = try encoder.encode(decodedData!)
+          let json = String(data: jsonData, encoding: String.Encoding.utf8)
+          return json!
+        }   
+      }
+      return "no apps selected yet"
     }
 
     View(ExpoScreentimeView.self) {
       Prop("name") { (view: ExpoScreentimeView, text: String) in
         view.screenTimeView.setText(text)
       }
+      Events("onSelectEvent")
     }
   }
 }
