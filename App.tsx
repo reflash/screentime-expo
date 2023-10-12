@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
-import { SafeAreaView, StyleSheet, Text } from 'react-native';
-import { ExpoScreentimeView, authorize, selectedAppsData } from './modules/expo-screentime';
+import { Button, SafeAreaView, StyleSheet, Text } from 'react-native';
+import { ExpoScreentimeView, authorize, blockApps, unblockApps, selectedAppsData } from './modules/expo-screentime';
 import { useState, useEffect } from 'react';
 
 export default function App() {
@@ -16,18 +16,30 @@ export default function App() {
 
     screentimeAuth();
   }, []);
+
+  const handleBlock = () => {
+    blockApps();
+  }
+
+  const handleUnblock = () => {
+    unblockApps();
+  }
   
   return (
     <SafeAreaView style={styles.container}>
-      <Text>Apps: {appsData}</Text>
+      {/* <Text>Apps: {appsData}</Text> */}
       {authorized && 
-        <ExpoScreentimeView 
-          style={{ height: 50, width: "100%" }} 
-          name="123"
-          onSelectEvent={({ nativeEvent: { } }) => {
-            setAppsData(selectedAppsData());
-          }}
-        />
+        <>
+          <ExpoScreentimeView 
+            style={{ height: 100, width: "100%" }} 
+            name="123"
+            onSelectEvent={({ nativeEvent: { } }) => {
+              setAppsData(selectedAppsData());
+            }}
+          />
+          <Button title='Block' onPress={handleBlock} />
+          <Button title='Unblock' onPress={handleUnblock} />
+        </>
       }
       <StatusBar style="auto" />
     </SafeAreaView>

@@ -5,21 +5,27 @@ import SwiftUI
 import FamilyControls
 import Combine
 
-@available(iOS 15, *)
+@available(iOS 15.2, *)
 struct ScreenTimeSelectAppsContentView: View {
     @State private var pickerIsPresented = false
     @ObservedObject var model: ScreenTimeSelectAppsModel
 
     var body: some View {
-        Button {
-            pickerIsPresented = true
-        } label: {
-            Text("Select Apps")
+        VStack {
+            Button {
+                pickerIsPresented = true
+            } label: {
+                Text("Select Apps")
+            }
+            .familyActivityPicker(
+                isPresented: $pickerIsPresented, 
+                selection: $model.activitySelection
+            )
+            // if let categoryToken = model.activitySelection.categoryTokens.first {
+            //     Label(categoryToken)
+            // }
         }
-        .familyActivityPicker(
-            isPresented: $pickerIsPresented, 
-            selection: $model.activitySelection
-        )
+        
     }
 }
 
@@ -68,7 +74,7 @@ class ScreenTimeView: UIView {
   
   override init(frame: CGRect) {
     super.init(frame: frame)
-    if #available(iOS 15.0, *) {
+    if #available(iOS 15.2, *) {
       let model = ScreenTimeSelectAppsModel()
       let host = UIHostingController(rootView: ScreenTimeSelectAppsContentView(model: model))
       let hostView = host.view!
