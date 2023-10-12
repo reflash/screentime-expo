@@ -25,9 +25,8 @@ class ExpoScreentimeModule : Module() {
       return false
     }
 
-    Function("selectedAppsData") {
-      return ""
-    }
+    Function("blockApps") {}
+    Function("unblockApps") {}
 
     View(ExpoScreentimeView::class) {
       // Defines a setter for the `name` prop.

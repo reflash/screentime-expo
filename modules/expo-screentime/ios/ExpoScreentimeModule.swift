@@ -1,5 +1,6 @@
 import ExpoModulesCore
 import FamilyControls
+import ManagedSettings
 
 public class ExpoScreentimeModule: Module {
   private let decoder = JSONDecoder()
@@ -36,6 +37,31 @@ public class ExpoScreentimeModule: Module {
         return await authTask.value
       }
       return false
+    }
+
+    Function("blockApps") { () -> Void in
+      if #available(iOS 16.0, *) {
+        let store = ManagedSettingsStore()
+        let data = UserDefaults.standard.data(forKey: "ScreenTimeSelection")
+        if data != nil {
+          let decodedData = try? decoder.decode(
+              FamilyActivitySelection.self,
+              from: data!
+          )
+            if let unwrapped = decodedData {
+                store.shield.applicationCategories = ShieldSettings.ActivityCategoryPolicy.specific(unwrapped.categoryTokens)
+                store.shield.applications = unwrapped.applicationTokens
+            }
+        }
+      }
+    }
+
+    Function("unblockApps") { () -> Void in
+      if #available(iOS 16.0, *) {
+        let store = ManagedSettingsStore()
+        store.shield.applicationCategories = ShieldSettings.ActivityCategoryPolicy.none
+        store.shield.applications = Set()
+      }
     }
 
     Function("selectedAppsData") { () -> String in

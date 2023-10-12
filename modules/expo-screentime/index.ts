@@ -32,4 +32,12 @@ export function selectedAppsData(): string {
   return ExpoScreentimeModule.selectedAppsData();
 }
 
+export function blockApps(): void {
+  return ExpoScreentimeModule.blockApps();
+}
+
+export function unblockApps(): void {
+  return ExpoScreentimeModule.unblockApps();
+}
+
 export { ExpoScreentimeView, ExpoScreentimeViewProps, ChangeEventPayload };
