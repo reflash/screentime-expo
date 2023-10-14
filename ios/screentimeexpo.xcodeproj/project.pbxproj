@@ -18,6 +18,14 @@
 		B7B5C4C92AD92DDA0078AE87 /* ManagedSettingsUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7B5C4C82AD92DDA0078AE87 /* ManagedSettingsUI.framework */; };
 		B7B5C4CC2AD92DDA0078AE87 /* ShieldConfigurationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7B5C4CB2AD92DDA0078AE87 /* ShieldConfigurationExtension.swift */; };
 		B7B5C4D12AD92DDA0078AE87 /* ScreenTimeShield.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = B7B5C4C52AD92DDA0078AE87 /* ScreenTimeShield.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		B7B5C4DC2AD99E4F0078AE87 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7B5C4DB2AD99E4F0078AE87 /* WidgetKit.framework */; };
+		B7B5C4DE2AD99E4F0078AE87 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7B5C4DD2AD99E4F0078AE87 /* SwiftUI.framework */; };
+		B7B5C4E12AD99E4F0078AE87 /* screentimewidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7B5C4E02AD99E4F0078AE87 /* screentimewidgetBundle.swift */; };
+		B7B5C4E32AD99E4F0078AE87 /* screentimewidgetLiveActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7B5C4E22AD99E4F0078AE87 /* screentimewidgetLiveActivity.swift */; };
+		B7B5C4E52AD99E4F0078AE87 /* screentimewidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7B5C4E42AD99E4F0078AE87 /* screentimewidget.swift */; };
+		B7B5C4E72AD99E4F0078AE87 /* AppIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7B5C4E62AD99E4F0078AE87 /* AppIntent.swift */; };
+		B7B5C4E92AD99E500078AE87 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B7B5C4E82AD99E500078AE87 /* Assets.xcassets */; };
+		B7B5C4ED2AD99E500078AE87 /* screentimewidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = B7B5C4DA2AD99E4F0078AE87 /* screentimewidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		BB2F792D24A3F905000567C9 /* Expo.plist in Resources */ = {isa = PBXBuildFile; fileRef = BB2F792C24A3F905000567C9 /* Expo.plist */; };
 /* End PBXBuildFile section */
 
@@ -29,6 +37,13 @@
 			remoteGlobalIDString = B7B5C4C42AD92DDA0078AE87;
 			remoteInfo = ScreenTimeShield;
 		};
+		B7B5C4EB2AD99E500078AE87 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 83CBB9F71A601CBA00E9B192 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B7B5C4D92AD99E4F0078AE87;
+			remoteInfo = screentimewidgetExtension;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -39,6 +54,7 @@
 			dstSubfolderSpec = 13;
 			files = (
 				B7B5C4D12AD92DDA0078AE87 /* ScreenTimeShield.appex in Embed Foundation Extensions */,
+				B7B5C4ED2AD99E500078AE87 /* screentimewidgetExtension.appex in Embed Foundation Extensions */,
 			);
 			name = "Embed Foundation Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -64,6 +80,15 @@
 		B7B5C4CB2AD92DDA0078AE87 /* ShieldConfigurationExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShieldConfigurationExtension.swift; sourceTree = "<group>"; };
 		B7B5C4CD2AD92DDA0078AE87 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B7B5C4CE2AD92DDA0078AE87 /* ScreenTimeShield.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ScreenTimeShield.entitlements; sourceTree = "<group>"; };
+		B7B5C4DA2AD99E4F0078AE87 /* screentimewidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = screentimewidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		B7B5C4DB2AD99E4F0078AE87 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		B7B5C4DD2AD99E4F0078AE87 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		B7B5C4E02AD99E4F0078AE87 /* screentimewidgetBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = screentimewidgetBundle.swift; sourceTree = "<group>"; };
+		B7B5C4E22AD99E4F0078AE87 /* screentimewidgetLiveActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = screentimewidgetLiveActivity.swift; sourceTree = "<group>"; };
+		B7B5C4E42AD99E4F0078AE87 /* screentimewidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = screentimewidget.swift; sourceTree = "<group>"; };
+		B7B5C4E62AD99E4F0078AE87 /* AppIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIntent.swift; sourceTree = "<group>"; };
+		B7B5C4E82AD99E500078AE87 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		B7B5C4EA2AD99E500078AE87 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BB2F792C24A3F905000567C9 /* Expo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Expo.plist; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		FAC715A2D49A985799AEE119 /* ExpoModulesProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ExpoModulesProvider.swift; path = "Pods/Target Support Files/Pods-screentimeexpo/ExpoModulesProvider.swift"; sourceTree = "<group>"; };
@@ -84,6 +109,15 @@
 			files = (
 				B7B5C4C72AD92DDA0078AE87 /* ManagedSettings.framework in Frameworks */,
 				B7B5C4C92AD92DDA0078AE87 /* ManagedSettingsUI.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B7B5C4D72AD99E4F0078AE87 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B7B5C4DE2AD99E4F0078AE87 /* SwiftUI.framework in Frameworks */,
+				B7B5C4DC2AD99E4F0078AE87 /* WidgetKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -113,6 +147,8 @@
 				58EEBF8E8E6FB1BC6CAF49B5 /* libPods-screentimeexpo.a */,
 				B7B5C4C62AD92DDA0078AE87 /* ManagedSettings.framework */,
 				B7B5C4C82AD92DDA0078AE87 /* ManagedSettingsUI.framework */,
+				B7B5C4DB2AD99E4F0078AE87 /* WidgetKit.framework */,
+				B7B5C4DD2AD99E4F0078AE87 /* SwiftUI.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -130,6 +166,7 @@
 				13B07FAE1A68108700A75B9A /* screentimeexpo */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				B7B5C4CA2AD92DDA0078AE87 /* ScreenTimeShield */,
+				B7B5C4DF2AD99E4F0078AE87 /* screentimewidget */,
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				D65327D7A22EEC0BE12398D9 /* Pods */,
@@ -145,6 +182,7 @@
 			children = (
 				13B07F961A680F5B00A75B9A /* screentimeexpo.app */,
 				B7B5C4C52AD92DDA0078AE87 /* ScreenTimeShield.appex */,
+				B7B5C4DA2AD99E4F0078AE87 /* screentimewidgetExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -165,6 +203,19 @@
 				B7B5C4CE2AD92DDA0078AE87 /* ScreenTimeShield.entitlements */,
 			);
 			path = ScreenTimeShield;
+			sourceTree = "<group>";
+		};
+		B7B5C4DF2AD99E4F0078AE87 /* screentimewidget */ = {
+			isa = PBXGroup;
+			children = (
+				B7B5C4E02AD99E4F0078AE87 /* screentimewidgetBundle.swift */,
+				B7B5C4E22AD99E4F0078AE87 /* screentimewidgetLiveActivity.swift */,
+				B7B5C4E42AD99E4F0078AE87 /* screentimewidget.swift */,
+				B7B5C4E62AD99E4F0078AE87 /* AppIntent.swift */,
+				B7B5C4E82AD99E500078AE87 /* Assets.xcassets */,
+				B7B5C4EA2AD99E500078AE87 /* Info.plist */,
+			);
+			path = screentimewidget;
 			sourceTree = "<group>";
 		};
 		BB2F792B24A3F905000567C9 /* Supporting */ = {
@@ -215,6 +266,7 @@
 			);
 			dependencies = (
 				B7B5C4D02AD92DDA0078AE87 /* PBXTargetDependency */,
+				B7B5C4EC2AD99E500078AE87 /* PBXTargetDependency */,
 			);
 			name = screentimeexpo;
 			productName = screentimeexpo;
@@ -238,6 +290,23 @@
 			productReference = B7B5C4C52AD92DDA0078AE87 /* ScreenTimeShield.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
+		B7B5C4D92AD99E4F0078AE87 /* screentimewidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B7B5C4F02AD99E500078AE87 /* Build configuration list for PBXNativeTarget "screentimewidgetExtension" */;
+			buildPhases = (
+				B7B5C4D62AD99E4F0078AE87 /* Sources */,
+				B7B5C4D72AD99E4F0078AE87 /* Frameworks */,
+				B7B5C4D82AD99E4F0078AE87 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = screentimewidgetExtension;
+			productName = screentimewidgetExtension;
+			productReference = B7B5C4DA2AD99E4F0078AE87 /* screentimewidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -251,6 +320,9 @@
 						LastSwiftMigration = 1250;
 					};
 					B7B5C4C42AD92DDA0078AE87 = {
+						CreatedOnToolsVersion = 15.0;
+					};
+					B7B5C4D92AD99E4F0078AE87 = {
 						CreatedOnToolsVersion = 15.0;
 					};
 				};
@@ -270,6 +342,7 @@
 			targets = (
 				13B07F861A680F5B00A75B9A /* screentimeexpo */,
 				B7B5C4C42AD92DDA0078AE87 /* ScreenTimeShield */,
+				B7B5C4D92AD99E4F0078AE87 /* screentimewidgetExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -289,6 +362,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B7B5C4D82AD99E4F0078AE87 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B7B5C4E92AD99E500078AE87 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -429,6 +510,17 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		B7B5C4D62AD99E4F0078AE87 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B7B5C4E12AD99E4F0078AE87 /* screentimewidgetBundle.swift in Sources */,
+				B7B5C4E72AD99E4F0078AE87 /* AppIntent.swift in Sources */,
+				B7B5C4E52AD99E4F0078AE87 /* screentimewidget.swift in Sources */,
+				B7B5C4E32AD99E4F0078AE87 /* screentimewidgetLiveActivity.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -436,6 +528,11 @@
 			isa = PBXTargetDependency;
 			target = B7B5C4C42AD92DDA0078AE87 /* ScreenTimeShield */;
 			targetProxy = B7B5C4CF2AD92DDA0078AE87 /* PBXContainerItemProxy */;
+		};
+		B7B5C4EC2AD99E500078AE87 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B7B5C4D92AD99E4F0078AE87 /* screentimewidgetExtension */;
+			targetProxy = B7B5C4EB2AD99E500078AE87 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -571,6 +668,7 @@
 					"$(inherited)",
 					"-Wl",
 					"-ld_classic",
+					"-Wl -ld_classic ",
 				);
 				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
 				SDKROOT = iphoneos;
@@ -635,6 +733,7 @@
 					"$(inherited)",
 					"-Wl",
 					"-ld_classic",
+					"-Wl -ld_classic ",
 				);
 				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
 				SDKROOT = iphoneos;
@@ -677,6 +776,7 @@
 				MARKETING_VERSION = 1.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
+				OTHER_SWIFT_FLAGS = "$(inherited) -D EXPO_CONFIGURATION_DEBUG";
 				PRODUCT_BUNDLE_IDENTIFIER = com.test.screentime.expo.ScreenTimeShield;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -719,7 +819,99 @@
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MARKETING_VERSION = 1.0;
 				MTL_FAST_MATH = YES;
+				OTHER_SWIFT_FLAGS = "$(inherited) -D EXPO_CONFIGURATION_RELEASE";
 				PRODUCT_BUNDLE_IDENTIFIER = com.test.screentime.expo.ScreenTimeShield;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		B7B5C4EE2AD99E500078AE87 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = screentimewidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = screentimewidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MARKETING_VERSION = 1.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				OTHER_SWIFT_FLAGS = "$(inherited) -D EXPO_CONFIGURATION_DEBUG";
+				PRODUCT_BUNDLE_IDENTIFIER = com.test.screentime.expo.screentimewidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		B7B5C4EF2AD99E500078AE87 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = screentimewidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = screentimewidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MARKETING_VERSION = 1.0;
+				MTL_FAST_MATH = YES;
+				OTHER_SWIFT_FLAGS = "$(inherited) -D EXPO_CONFIGURATION_RELEASE";
+				PRODUCT_BUNDLE_IDENTIFIER = com.test.screentime.expo.screentimewidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
@@ -755,6 +947,15 @@
 			buildConfigurations = (
 				B7B5C4D32AD92DDA0078AE87 /* Debug */,
 				B7B5C4D42AD92DDA0078AE87 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B7B5C4F02AD99E500078AE87 /* Build configuration list for PBXNativeTarget "screentimewidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B7B5C4EE2AD99E500078AE87 /* Debug */,
+				B7B5C4EF2AD99E500078AE87 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
