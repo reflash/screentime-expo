@@ -48,7 +48,7 @@ class ScreenTimeView: UIView {
 
   @available(iOS 15, *)
   func saveSelection(selection: FamilyActivitySelection) {
-    let defaults = UserDefaults.standard
+    let defaults = UserDefaults.init(suiteName: "group.screentime.expo")!
 
     defaults.set(
         try? encoder.encode(selection), 
@@ -60,7 +60,7 @@ class ScreenTimeView: UIView {
     
   @available(iOS 15, *)
   func savedSelection() -> FamilyActivitySelection? {
-      let defaults = UserDefaults.standard
+      let defaults = UserDefaults.init(suiteName: "group.screentime.expo")!
       
       guard let data = defaults.data(forKey: userDefaultsKey) else {
           return nil

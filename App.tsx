@@ -1,21 +1,47 @@
 import { StatusBar } from 'expo-status-bar';
-import { Button, SafeAreaView, StyleSheet, Text } from 'react-native';
-import { ExpoScreentimeView, authorize, blockApps, unblockApps, selectedAppsData } from './modules/expo-screentime';
+import { Button, SafeAreaView, StyleSheet, NativeModules } from 'react-native';
+import { ExpoScreentimeView, authorize, blockApps, unblockApps, selectedAppsData, addIsBlockedListener, isBlocked } from './modules/expo-screentime';
 import { useState, useEffect } from 'react';
+import SharedGroupPreferences from 'react-native-shared-group-preferences';
+
+// const group = 'group.screentime.expo';
+// const SharedStorage = NativeModules.SharedStorage;
 
 export default function App() {
   const [authorized, setAuthorized] = useState<boolean>(false);
   const [appsData, setAppsData] = useState<string>("");
+  const [blocked, setBlocked] = useState<boolean>(false);
+  
+  const changeBlockedState = async (b: boolean) => {
+    setBlocked(b);
 
+    // try {
+    //   // iOS
+    //   await SharedGroupPreferences.setItem('widgetKey', { isBlocked: b }, group);
+    // } catch (error) {
+    //   console.log({error});
+    // }
+    // // Android
+    // SharedStorage.set(JSON.stringify({ isBlocked: b }));
+  }
   useEffect(() => {
     const screentimeAuth = async () => {
       const res = await authorize();
       setAppsData(selectedAppsData());
       setAuthorized(res);
+      changeBlockedState(isBlocked());
     }
 
     screentimeAuth();
   }, []);
+
+  useEffect(() => {
+    const subscription = addIsBlockedListener(({ isBlocked }) => {
+      changeBlockedState(isBlocked);
+    });
+
+    return () => subscription.remove();
+  }, [setBlocked]);
 
   const handleBlock = () => {
     blockApps();
@@ -37,8 +63,7 @@ export default function App() {
               setAppsData(selectedAppsData());
             }}
           />
-          <Button title='Block' onPress={handleBlock} />
-          <Button title='Unblock' onPress={handleUnblock} />
+          <Button title={blocked ? 'Unblock' : 'Block'} onPress={blocked ? handleUnblock : handleBlock} />
         </>
       }
       <StatusBar style="auto" />

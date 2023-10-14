@@ -11,6 +11,7 @@ class ExpoScreentimeModule : Module() {
     Name("ExpoScreentime")
 
     Events("onChangeTheme")
+    Events("onChangeBlocked")
 
     Function("setTheme") { theme: String ->
       getPreferences().edit().putString("theme", theme).commit()
@@ -27,6 +28,9 @@ class ExpoScreentimeModule : Module() {
 
     Function("blockApps") {}
     Function("unblockApps") {}
+    Function("isBlocked") {
+      return false
+    }
 
     View(ExpoScreentimeView::class) {
       // Defines a setter for the `name` prop.
