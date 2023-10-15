@@ -1,8 +1,9 @@
 import { StatusBar } from 'expo-status-bar';
-import { Button, SafeAreaView, StyleSheet, NativeModules } from 'react-native';
+import { Button, SafeAreaView, StyleSheet, NativeModules, AppStateStatus } from 'react-native';
 import { ExpoScreentimeView, authorize, blockApps, unblockApps, selectedAppsData, addIsBlockedListener, isBlocked } from './modules/expo-screentime';
-import { useState, useEffect } from 'react';
-import SharedGroupPreferences from 'react-native-shared-group-preferences';
+import { useState, useEffect, useRef } from 'react';
+import { AppState } from 'react-native';
+
 
 // const group = 'group.screentime.expo';
 // const SharedStorage = NativeModules.SharedStorage;
@@ -11,6 +12,7 @@ export default function App() {
   const [authorized, setAuthorized] = useState<boolean>(false);
   const [appsData, setAppsData] = useState<string>("");
   const [blocked, setBlocked] = useState<boolean>(false);
+  const appState = useRef(AppState.currentState);
   
   const changeBlockedState = async (b: boolean) => {
     setBlocked(b);
@@ -24,6 +26,30 @@ export default function App() {
     // // Android
     // SharedStorage.set(JSON.stringify({ isBlocked: b }));
   }
+
+  useEffect(() => {
+    const handleAppStateChange = (nextAppState: AppStateStatus) => {
+      if (
+        appState.current.match(/inactive|background/) &&
+        nextAppState === 'active'
+      ) {
+        const newBlocked = isBlocked();
+        if (blocked && !newBlocked) {
+          unblockApps();
+        } else {
+          blockApps();
+        }
+      }
+
+      appState.current = nextAppState;
+    };
+
+    const subscription = AppState.addEventListener('change', handleAppStateChange);
+    return () => {
+      subscription.remove();
+    }
+  }, [blocked]);
+
   useEffect(() => {
     const screentimeAuth = async () => {
       const res = await authorize();
