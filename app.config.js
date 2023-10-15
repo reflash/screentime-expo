@@ -10,6 +10,9 @@ module.exports = ({ config }) => ({
         bundleIdentifier: "com.test.screentime.expo",
         buildNumber: "4",
         entitlements: {
+          "com.apple.security.application-groups": [
+            "group.com.test.screentime.expo.widget"
+          ],
           "com.apple.developer.family-controls": true
         }
     },

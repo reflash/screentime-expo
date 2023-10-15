@@ -16,6 +16,14 @@ export function addThemeListener(listener: (event: ThemeChangeEvent) => void): S
   return emitter.addListener<ThemeChangeEvent>('onChangeTheme', listener);
 }
 
+export type BlockedChangeEvent = {
+  isBlocked: boolean;
+};
+
+export function addIsBlockedListener(listener: (event: BlockedChangeEvent) => void): Subscription {
+  return emitter.addListener<BlockedChangeEvent>('onChangeBlocked', listener);
+}
+
 export function getTheme(): string {
   return ExpoScreentimeModule.getTheme();
 }
@@ -38,6 +46,10 @@ export function blockApps(): void {
 
 export function unblockApps(): void {
   return ExpoScreentimeModule.unblockApps();
+}
+
+export function isBlocked(): boolean {
+  return ExpoScreentimeModule.isBlocked();
 }
 
 export { ExpoScreentimeView, ExpoScreentimeViewProps, ChangeEventPayload };
