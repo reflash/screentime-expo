@@ -34,10 +34,12 @@ export default function App() {
         nextAppState === 'active'
       ) {
         const newBlocked = isBlocked();
-        if (blocked && !newBlocked) {
-          unblockApps();
-        } else {
-          blockApps();
+        if (blocked !== newBlocked) {
+          if (blocked && !newBlocked) {
+            unblockApps();
+          } else {
+            blockApps();
+          }
         }
       }
 

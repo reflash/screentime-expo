@@ -24,7 +24,7 @@ struct screentimewidgetLiveActivity: Widget {
         ActivityConfiguration(for: screentimewidgetAttributes.self) { context in
             // Lock screen/banner UI goes here
             VStack {
-                Text("Hello \(context.state.emoji)")
+                Text("Applications are \(context.state.emoji)")
             }
             .activityBackgroundTint(Color.cyan)
             .activitySystemActionForegroundColor(Color.black)
@@ -44,9 +44,9 @@ struct screentimewidgetLiveActivity: Widget {
                     // more content
                 }
             } compactLeading: {
-                Text("L")
+                Text("🎯")
             } compactTrailing: {
-                Text("T \(context.state.emoji)")
+                Text("\(context.state.emoji)")
             } minimal: {
                 Text(context.state.emoji)
             }

@@ -2,6 +2,17 @@ import ExpoModulesCore
 import FamilyControls
 import ManagedSettings
 import WidgetKit
+import ActivityKit
+
+struct screentimewidgetAttributes: ActivityAttributes {
+    public struct ContentState: Codable, Hashable {
+        // Dynamic stateful properties about your activity go here!
+        var emoji: String
+    }
+
+    // Fixed non-changing properties about your activity go here!
+    var name: String
+}
 
 public class ExpoScreentimeModule: Module {
   private let decoder = JSONDecoder()
@@ -75,6 +86,13 @@ public class ExpoScreentimeModule: Module {
                 sendEvent("onChangeBlocked", [
                   "isBlocked": true
                 ]);
+                if #available(iOS 16.2, *) {
+                    let activity = try Activity.request(
+                        attributes: screentimewidgetAttributes(name: "Text1"),
+                        content: .init(state: screentimewidgetAttributes.ContentState(emoji: "Blocked"), staleDate: nil),
+                        pushType: .token
+                    )
+                }
                 if #available(iOS 14.0, *) {
                   WidgetCenter.shared.reloadAllTimelines()
                 }
@@ -83,7 +101,7 @@ public class ExpoScreentimeModule: Module {
       }
     }
 
-    Function("unblockApps") { () -> Void in
+    AsyncFunction("unblockApps") { () async -> Void in
       if #available(iOS 16.0, *) {
         let store = ManagedSettingsStore()
         let userDefaults = UserDefaults.init(suiteName: "group.screentime.expo")!
@@ -93,6 +111,11 @@ public class ExpoScreentimeModule: Module {
         sendEvent("onChangeBlocked", [
           "isBlocked": false
         ]);
+          if #available(iOS 16.2, *) {
+            if let activity = Activity<screentimewidgetAttributes>.activities.first {
+              await activity.end(ActivityContent(state: screentimewidgetAttributes.ContentState(emoji: "closing"), staleDate: nil), dismissalPolicy: .immediate)
+            }
+          }
         if #available(iOS 14.0, *) {
           WidgetCenter.shared.reloadAllTimelines()
         }
